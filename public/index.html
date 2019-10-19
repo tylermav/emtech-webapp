@@ -14,6 +14,8 @@
     <script defer src="/__/firebase/7.2.1/firebase-storage.js"></script>
     <!-- initialize the SDK after all desired features are loaded -->
     <script defer src="/__/firebase/init.js"></script>
+    <!-- add zabo js-->
+    <script src="https://cdn.zabo.com/latest/zabo.js"></script>
 
     <style media="screen">
       body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
@@ -62,6 +64,29 @@
           document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
         }
       });
+    </script>
+    <button id='connect'>Connect</button>
+    <script>
+      // Wait for document to fully load
+      document.onreadystatechange = () => {
+        if (document.readyState !== 'complete') { return }
+
+        // Initiate Zabo SDK
+        Zabo.init({
+          clientId: 'J28kJ68mHfiXSYLqyoujgFA4mCrRGxBiUkELZS1YImTyD4DAhNmR9VZqpiFpqRUV',
+          env: 'sandbox'
+        })
+
+        // Bind "connect" button
+        document.querySelector('#connect').addEventListener('click', ev => {
+          // Call the .connect() window
+          Zabo.connect().onConnection(account => {
+            console.log('account connected:', account)
+          }).onError(error => {
+            console.error('account connection error:', error)
+          })
+        })
+      }
     </script>
   </body>
 </html>
