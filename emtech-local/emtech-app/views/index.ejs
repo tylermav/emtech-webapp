@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My App</title>
+  <script src="https://cdn.zabo.com/latest/zabo.js"></script>
+</head>
+<body>
+  <button id='connect'>Connect</button>
+  <script>
+    // Wait for document to fully load
+    document.onreadystatechange = () => {
+      if (document.readyState !== 'complete') { return }
+
+      // Initiate Zabo SDK
+      Zabo.init({
+        clientId: 'CODAzOKjHmKcsiadAFexw6jQNgPYVqok7XlOPS7zSJsGW34V93Jw9LMzD2OPVnmn',
+        env: 'sandbox'
+      })
+
+      // Bind "connect" button
+      document.querySelector('#connect').addEventListener('click', ev => {
+        // Call the .connect() window
+        Zabo.connect().onConnection(account => {
+          console.log('account connected:', account)
+        }).onError(error => {
+          console.error('account connection error:', error)
+        })
+      })
+    }
+  </script>
+</body>
+</html>
