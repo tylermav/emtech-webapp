@@ -2,7 +2,6 @@
 document.onreadystatechange = () => {
   if (document.readyState !== 'complete') { return }
 
-  var
 
   // Initiate Zabo SDK
   Zabo.init({
