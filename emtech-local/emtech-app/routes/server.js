@@ -6,7 +6,7 @@ var url = require('url') ;
 
 http.createServer(function (req, res) {
   var hostname = req.headers.host; // hostname = 'localhost:8080'
-  var pathname = url.parse(req.url).pathname; // pathname = '/MyApp'
+  var pathname = url.parse(req.url).pathname; // pathname = '/Zabot'
   console.log('http://' + hostname + pathname);
 
   res.writeHead(200);
@@ -16,7 +16,5 @@ http.createServer(function (req, res) {
 var server = app.listen(8081, function () {
    var host = server.address().address
    var port = server.address().port
-
    console.log("Example app listening at http://%s:%s", host, port)
-   zabo.users.create(account)
 })
